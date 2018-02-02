@@ -1,0 +1,23 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        applicationId "com.hackathon.haricotai"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.cloudant:cloudant-client:2.7.0'
+    compile 'com.github.stfalcon:chatkit:0.2.2'
+    compile 'com.ibm.watson.developer_cloud:java-sdk:4.0.0'
+}
