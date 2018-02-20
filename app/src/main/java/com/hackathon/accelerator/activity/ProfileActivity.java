@@ -28,7 +28,7 @@ import com.hackathon.accelerator.view.AllergenView;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.hackathon.accelerator.utility.Constants.REQUEST_READ_CONTACTS;
+import static com.hackathon.accelerator.utility.Constants.REQUEST_READ_CAMERA_AND_STORAGE;
 import static com.hackathon.accelerator.utility.Constants.log;
 
 public class ProfileActivity extends BaseActivity {
@@ -41,7 +41,7 @@ public class ProfileActivity extends BaseActivity {
         allergenViews = new ArrayList<>();
         setContentView(R.layout.activity_profile);
         if (!(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED))
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_READ_CONTACTS);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_READ_CAMERA_AND_STORAGE);
         Button buttonSave = findViewById(R.id.button_save_and_continue);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override

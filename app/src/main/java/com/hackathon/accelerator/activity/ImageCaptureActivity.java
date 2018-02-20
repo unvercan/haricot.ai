@@ -21,10 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.hackathon.accelerator.utility.Constants.IMAGE_CLASSIFIER_RESULT_DATA;
+import static com.hackathon.accelerator.utility.Constants.IMAGE_CLASSIFIER_THRESHOLD;
 import static com.hackathon.accelerator.utility.Constants.REQUEST_ACTIVITY_CHAT_BOT;
 import static com.hackathon.accelerator.utility.Constants.REQUEST_ACTIVITY_IMAGE_CAPTURE;
 import static com.hackathon.accelerator.utility.Constants.REQUEST_ACTIVITY_RESULT;
-import static com.hackathon.accelerator.utility.Constants.VISUAL_RECOGNITION_THRESHOLD;
 import static com.hackathon.accelerator.utility.Constants.imageFile;
 import static com.hackathon.accelerator.utility.Constants.imageFileName;
 import static com.hackathon.accelerator.utility.Constants.imagesDirectory;
@@ -77,7 +77,7 @@ public class ImageCaptureActivity extends BaseActivity {
                     } else {
                         List<ClassWithScore> filteredResults = new ArrayList<>();
                         for (ClassWithScore classWithScore : classWithScores)
-                            if (classWithScore.getScore() >= VISUAL_RECOGNITION_THRESHOLD)
+                            if (classWithScore.getScore() >= IMAGE_CLASSIFIER_THRESHOLD)
                                 filteredResults.add(classWithScore);
                         Log.i(log, "image capture activity: results are filtered.");
                         for (ClassWithScore result : filteredResults) {
