@@ -1,0 +1,396 @@
+{
+  "name": "TestConversation",
+  "intents": [
+    {
+      "intent": "food",
+      "examples": [
+        {
+          "text": "soup"
+        },
+        {
+          "text": "sandwich"
+        },
+        {
+          "text": "sandwiches"
+        },
+        {
+          "text": "salads"
+        },
+        {
+          "text": "meat"
+        },
+        {
+          "text": "Rice"
+        },
+        {
+          "text": "Fish"
+        },
+        {
+          "text": "Bread"
+        },
+        {
+          "text": "Pasta"
+        },
+        {
+          "text": "Meatball"
+        }
+      ],
+      "description": "defined food list"
+    },
+    {
+      "intent": "foodNotFound",
+      "examples": [
+        {
+          "text": "food-not-found"
+        }
+      ],
+      "description": "food not found by NLP"
+    },
+    {
+      "intent": "hi",
+      "examples": [
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hi"
+        },
+        {
+          "text": "Welcome"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "foodFound",
+      "examples": [
+        {
+          "text": "allergic"
+        },
+        {
+          "text": "non-allergic"
+        },
+        {
+          "text": "nonallergic"
+        },
+        {
+          "text": "non allergic"
+        }
+      ],
+      "description": "food found by NLP"
+    },
+    {
+      "intent": "goodbye",
+      "examples": [
+        {
+          "text": "Goodbye"
+        },
+        {
+          "text": "Bye"
+        },
+        {
+          "text": "bye bye"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "food",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "meatball",
+          "metadata": null,
+          "synonyms": [
+            "grain",
+            "meat"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "bread",
+          "metadata": null,
+          "synonyms": [
+            "grain"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "soup",
+          "metadata": null,
+          "synonyms": [
+            "tomato",
+            "cheese",
+            "potato"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "fish",
+          "metadata": null,
+          "synonyms": [
+            "fish"
+          ]
+        }
+      ],
+      "metadata": null,
+      "description": null
+    }
+  ],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2017-05-26"
+    }
+  },
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": null,
+      "output": {
+        "text": {
+          "values": [
+            "Analyzing your foods and ingredients"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_17_1517830569218",
+      "context": null,
+      "metadata": {},
+      "next_step": null,
+      "conditions": "#food && @food",
+      "description": null,
+      "dialog_node": "node_18_1517830645117",
+      "previous_sibling": null
+    },
+    {
+      "type": "event_handler",
+      "title": null,
+      "output": {},
+      "parent": "slot_14_1517830541668",
+      "context": null,
+      "metadata": null,
+      "next_step": null,
+      "conditions": null,
+      "event_name": "focus",
+      "description": null,
+      "dialog_node": "handler_16_1517830541668",
+      "previous_sibling": "handler_15_1517830541668"
+    },
+    {
+      "type": "event_handler",
+      "title": null,
+      "output": null,
+      "parent": "slot_14_1517830541668",
+      "context": null,
+      "metadata": null,
+      "next_step": null,
+      "conditions": null,
+      "event_name": "input",
+      "description": null,
+      "dialog_node": "handler_15_1517830541668",
+      "previous_sibling": null
+    },
+    {
+      "type": "response_condition",
+      "title": null,
+      "output": {
+        "text": {
+          "values": [
+            "Great! There isn't any allergens in your food. Your food is <? $food ?> and it has <? $ingredients.join(', ') ?> ingredient(s)."
+          ]
+        }
+      },
+      "parent": "node_19_1517830692599",
+      "context": null,
+      "metadata": {},
+      "next_step": null,
+      "conditions": "input.text ==\"non-allergic\" or input.text ==\"non allergic\" or input.text ==\"nonallergic\"",
+      "description": null,
+      "dialog_node": "node_21_1517830726598",
+      "previous_sibling": "node_20_1517830716067"
+    },
+    {
+      "type": "response_condition",
+      "title": null,
+      "output": {
+        "text": {
+          "values": [
+            "Alert! There are allergens in your food. Your food is <? $food ?> and it has <? $ingredients.join(', ') ?> ingredients. <? $allergens.join(', ') ?> ingredients are allergic for you."
+          ]
+        }
+      },
+      "parent": "node_19_1517830692599",
+      "context": null,
+      "metadata": {},
+      "next_step": null,
+      "conditions": "input.text ==\"allergic\"",
+      "description": null,
+      "dialog_node": "node_20_1517830716067",
+      "previous_sibling": null
+    },
+    {
+      "type": "slot",
+      "title": null,
+      "output": null,
+      "parent": "Welcome",
+      "context": null,
+      "metadata": null,
+      "variable": null,
+      "next_step": null,
+      "conditions": null,
+      "description": null,
+      "dialog_node": "slot_14_1517830541668",
+      "previous_sibling": null
+    },
+    {
+      "type": "standard",
+      "title": "Goodbye",
+      "output": {
+        "text": {
+          "values": [
+            "Bye",
+            "GoodBye",
+            "Bye Bye"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": null,
+      "context": null,
+      "metadata": {},
+      "next_step": null,
+      "conditions": "#goodbye",
+      "digress_in": "does_not_return",
+      "description": null,
+      "dialog_node": "node_6_1517818433893",
+      "previous_sibling": "node_17_1517830569218"
+    },
+    {
+      "type": "standard",
+      "title": "Food not found by NLP",
+      "output": {
+        "text": {
+          "values": [
+            "We can't understand your food."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": null,
+      "context": null,
+      "metadata": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_17_1517830569218"
+      },
+      "conditions": "#foodNotFound",
+      "description": null,
+      "dialog_node": "node_1_1518980506907",
+      "previous_sibling": "node_6_1517818433893"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "text": {
+          "values": [
+            "I'm not sure about that. Write again.",
+            "I don't understand. Repeat please"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": null,
+      "context": null,
+      "metadata": {},
+      "next_step": null,
+      "conditions": "anything_else",
+      "description": null,
+      "dialog_node": "node_8_1517819576995",
+      "previous_sibling": "node_19_1517830692599"
+    },
+    {
+      "type": "standard",
+      "title": "Food request",
+      "output": {
+        "text": {
+          "values": [
+            "What do you want to eat?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": null,
+      "context": null,
+      "metadata": {},
+      "next_step": null,
+      "conditions": "",
+      "description": null,
+      "dialog_node": "node_17_1517830569218",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Food found by NLP",
+      "output": {},
+      "parent": null,
+      "context": null,
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": null,
+      "conditions": "#foodFound",
+      "digress_in": "does_not_return",
+      "description": null,
+      "dialog_node": "node_19_1517830692599",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_1_1518980506907"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "text": {
+          "values": [
+            "Hello",
+            "Hi",
+            "Welcome"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": null,
+      "context": null,
+      "metadata": {
+        "fallback": "leave"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_17_1517830569218"
+      },
+      "conditions": "#hi",
+      "digress_in": "does_not_return",
+      "description": null,
+      "dialog_node": "Welcome",
+      "digress_out": "allow_all",
+      "previous_sibling": null
+    }
+  ],
+  "workspace_id": "82defec6-9a02-4971-9c20-debdf8013786",
+  "counterexamples": [
+    {
+      "text": "I don't understand"
+    }
+  ],
+  "learning_opt_out": false
+}

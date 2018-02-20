@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_chat"
+    android:id="@+id/activity_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context="com.hackathon.accelerator.activity.ChatActivity">
+    tools:context="com.hackathon.accelerator.activity.ProfileActivity">
 
-    <com.stfalcon.chatkit.messages.MessagesList
-        android:id="@+id/messagesList"
+    <ListView
+        android:id="@+id/list_view_allergens"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="9" />
 
-    <com.stfalcon.chatkit.messages.MessageInput
-        android:id="@+id/inputMessage"
+    <Button
+        android:id="@+id/button_save_and_continue"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        app:inputHint="Your message" />
+        android:text="Save and Continue"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>
