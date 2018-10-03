@@ -1,9 +1,9 @@
 # Haricot.AI Android Application 
-(for AI4Industries Hackathon 2017)
+# (AI4Industries Hackathon 2017)
 
 Team Accelerators:
-Fatih Erol,
-Onur Erdoğan,
-Yücel Ceylan,
-Cüneyt Yıldız,
-Ünver Can Ünlü
+* Fatih Erol
+* Onur Erdoğan
+* Yücel Ceylan
+* Cüneyt Yıldız
+* Ünver Can Ünlü
