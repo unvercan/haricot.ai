@@ -1,4 +1,5 @@
-# Haricot.AI Android Application Project for AI4Industries Hackathon 2017
+# Haricot.AI Android Application 
+(for AI4Industries Hackathon 2017)
 
 Team Accelerators:
 Fatih Erol,
