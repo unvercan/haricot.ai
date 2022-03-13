@@ -1,5 +1,4 @@
-# Haricot.AI Android Application 
-
+# haricot.ai
 - Accenture AI4Industries Hackathon 2017 project,
 - An Android application that finds possible allergens and crosses allergens in food, which they want to eat, using visual recognition or a chatbot.
 
